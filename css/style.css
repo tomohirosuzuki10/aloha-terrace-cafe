@@ -1,0 +1,450 @@
+/* =========================================================
+   ALOHA TERRACE CAFE — style.css
+   ---------------------------------------------------------
+   画像について:
+   ・images/ フォルダ内のローカル写真を使っている箇所と、
+     ネット上(Unsplash)の写真を使っている箇所があります。
+   ・ローカル写真 … あなたがアップした実写真(朝・夕)。
+   ・Unsplash … 仮のフリー素材。お店の実写真ができたら
+     images/ に入れて、該当のurl()を差し替えてください。
+   ========================================================= */
+
+* {
+  margin:0; /* 余白をリセット */
+  padding:0; /* 余白をリセット */
+  box-sizing:border-box; /* 幅計算をそろえる */
+}
+html { scroll-behavior:smooth; /* アンカー移動をなめらかにする */ }
+body {
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; /* 日本語本文フォント */
+  background:#2B1F14; /* ページ全体の背景色 */
+  color:#3D2E1E; /* 基本文字色 */
+}
+.script {
+  font-family:'Pacifico',"Snell Roundhand",cursive; /* 装飾用フォント */
+  font-weight:400; /* 標準の太さ */
+}
+a { text-decoration:none; /* 下線を消す */ }
+.ph {
+  background-size:cover; /* 枠いっぱいに広げる */
+  background-position:center; /* 中央を見せる */
+}
+
+/* --- 背景画像の定義 --------------------------------------
+   ▼ローカル写真(images/フォルダ)*/
+.b-morning {
+  background-image:linear-gradient(90deg,rgba(30,25,15,.55),rgba(30,25,15,.08) 60%), url('../images/terrace-morning.jpg'); /* 朝の写真に薄い影を重ねる */
+  background-size:cover; /* 画像を全面表示 */
+  background-position:center; /* 中央寄せ */
+}
+.b-lunch {
+  background-image:linear-gradient(270deg,rgba(40,25,12,.55),rgba(40,25,12,.08) 60%), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1800&q=80'); /* 店内イメージ */
+  background-size:cover; /* 画像を全面表示 */
+  background-position:center; /* 中央寄せ */
+  justify-content:flex-end; /* 右側に寄せる */
+}
+
+.b-night {
+  background-image:linear-gradient(90deg,rgba(40,15,25,.55),rgba(40,15,25,.08) 60%), url('../images/terrace-sunset.jpg'); /* 夕景の写真に薄い影を重ねる */
+  background-size:cover; /* 画像を全面表示 */
+  background-position:center; /* 中央寄せ */
+}
+
+/*   ▼Unsplash(仮のフリー素材) ＝ 実写真ができたら差し替え   */
+.img-sea {
+  background-image:linear-gradient(180deg,rgba(20,15,10,.18),rgba(20,15,10,0) 30%,rgba(20,15,10,.3) 100%), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80'); /* 海の写真 */
+  background-color:#7FB6C9; /* 補助色 */
+}
+.img-sunset {
+  background-image:url('https://images.unsplash.com/photo-1507400492013-162706c8c05e?auto=format&fit=crop&w=1800&q=80'); /* 夕焼けの写真 */
+  background-color:#D98A5F; /* 補助色 */
+}
+.img-coffee {
+  background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=80'); /* コーヒーの写真 */
+  background-color:#8A6647; /* 補助色 */
+}
+.img-food {
+  background-image:url('../images/poke-bowl.jpg'); /* フード写真 */
+  background-color:#C9925F; /* 補助色 */
+}
+.img-cafe {
+  background-image:url('../images/donuts.jpg'); /* ドーナツ写真 */
+  background-color:#A9876A; /* 補助色 */
+}
+.img-terrace {
+  background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80'); /* テラス写真 */
+  background-color:#6E5742; /* 補助色 */
+}
+
+
+/* ===== 上部ナビ ===== */
+.nav {
+  position:fixed; /* 画面上部に固定 */
+  top:0; /* 上端 */
+  left:0; /* 左端 */
+  right:0; /* 右端 */
+  z-index:60; /* 前面に出す */
+  display:flex; /* 横並び */
+  justify-content:flex-end; /* 右寄せ */
+  gap:28px; /* リンク間の余白 */
+  padding:18px 5vw; /* 内側の余白 */
+  transition:background .4s, box-shadow .4s; /* 背景と影をなめらかに変える */
+}
+.nav.scrolled {
+  background:rgba(43,31,20,.93); /* スクロール時の背景 */
+  box-shadow:0 4px 16px rgba(0,0,0,.35); /* 浮き上がる影 */
+}
+.nav a {
+  color:#fff; /* リンク色 */
+  font-size:13px; /* 文字サイズ */
+  font-weight:700; /* 太字 */
+  letter-spacing:.15em; /* 文字間 */
+  text-shadow:0 2px 8px rgba(0,0,0,.5); /* 背景に埋もれないようにする */
+}
+.nav a:hover { color:#E8B96F; /* ホバー時の色 */ }
+
+/* ===== ヒーロー(表紙) ===== */
+.hero {
+  min-height:100vh; /* 画面いっぱいの高さ */
+  display:flex; /* 縦積みレイアウト */
+  flex-direction:column; /* 上から下へ並べる */
+  color:#fff; /* 文字色 */
+}
+.hero .top { padding:24px 5vw 0; /* 上部ロゴの余白 */ }
+.hero .wood {
+  display:inline-block; /* 文字量に合わせる */
+  background:linear-gradient(180deg,#7A5A3A,#5C422A); /* 木札風の背景 */
+  border:2px solid #D8C5A8; /* 枠線 */
+  padding:12px 20px; /* 内側の余白 */
+  border-radius:6px; /* 角を少し丸める */
+  text-align:center; /* 中央揃え */
+  box-shadow:0 8px 20px rgba(0,0,0,.4); /* 立体感 */
+}
+.hero .wood b {
+  display:block; /* 改行する */
+  letter-spacing:.2em; /* 文字間 */
+  font-size:16px; /* 文字サイズ */
+}
+.hero .wood small {
+  font-size:9px; /* 小さい補足文字 */
+  letter-spacing:.28em; /* 文字間 */
+  color:#E8D9BF; /* 補助色 */
+}
+.hero .mid {
+  flex:1; /* 残り高さを使う */
+  display:flex; /* 中央配置 */
+  flex-direction:column; /* 縦並び */
+  justify-content:center; /* 縦中央 */
+  align-items:center; /* 横中央 */
+  text-align:center; /* テキスト中央 */
+  padding:0 6vw; /* 横余白 */
+  text-shadow:0 3px 16px rgba(0,0,0,.45); /* 読みやすさのための影 */
+}
+.hero h1 { font-size:clamp(38px,7vw,80px); /* 大見出しサイズ */ }
+.hero .mid p {
+  margin-top:16px; /* 見出しとの間隔 */
+  font-size:14px; /* 説明文サイズ */
+  letter-spacing:.25em; /* 文字間 */
+}
+.hero .cards {
+  display:grid; /* カードをグリッド表示 */
+  grid-template-columns:repeat(3,1fr); /* 3列 */
+  gap:18px; /* カード間の余白 */
+  padding:0 5vw 110px; /* 下に余白 */
+}
+.hero .card {
+  border:3px solid rgba(255,255,255,.88); /* 枠線 */
+  border-radius:10px; /* 角丸 */
+  min-height:200px; /* 最低高さ */
+  display:flex; /* 中身を縦に配置 */
+  flex-direction:column; /* 縦並び */
+  justify-content:space-between; /* 上下に分ける */
+  padding:16px; /* 内側余白 */
+  font-weight:800; /* 太字 */
+  letter-spacing:.12em; /* 文字間 */
+  color:#fff; /* 文字色 */
+  box-shadow:0 12px 28px rgba(0,0,0,.35); /* 影 */
+  text-shadow:0 2px 8px rgba(0,0,0,.6); /* 背景に負けないようにする */
+  transition:transform .25s; /* hoverの動きを滑らかにする */
+}
+.hero .card:hover { transform:translateY(-5px); /* 少し浮かせる */ }
+.hero .card span { font-size:15px; /* 見出しサイズ */ }
+.hero .card small { font-size:11px; font-weight:400; /* 補足文字 */ }
+
+@media (max-width:720px) {
+  .hero .cards { grid-template-columns:1fr; /* 1列にする */ }
+  .hero .card { min-height:120px; /* 高さを少し下げる */ }
+  .hero .top {
+    padding: 50px 5vw; /* 1. 余白を広げる（上下左右の調整） */
+    text-align: center; /* 2. 中身を中央に寄せる */
+  }
+}
+
+/* ===== 一日ストーリー ===== */
+/* 背景写真の上に文字を重ねるセクション */
+.band {
+  min-height:90vh; /* 画面の大部分を使う */
+  display:flex; /* 左右配置 */
+  align-items:center; /* 縦中央 */
+  color:#fff; /* 文字色 */
+}
+.band .in {
+  padding:12vh 7vw; /* セクション内の余白 */
+  max-width:600px; /* 読みやすい幅に制限 */
+  text-shadow:0 2px 14px rgba(0,0,0,.55); /* 背景に埋もれないようにする */
+}
+.band .time {
+  font-family:'Pacifico',cursive; /* 装飾フォント */
+  font-size:clamp(24px,3.4vw,34px); /* 画面幅で調整 */
+  color:#FFE3B3; /* 時間ラベルの色 */
+}
+.band h2 {
+  font-size:clamp(26px,4.4vw,46px); /* 見出しサイズ */
+  margin:12px 0 16px; /* 上下余白 */
+  line-height:1.4; /* 行間 */
+}
+.band p {
+  font-size:14.5px; /* 説明文サイズ */
+  line-height:2.3; /* ゆったりした行間 */
+}
+.b-lunch .in { text-align:right; /* お昼パートは右寄せ */ }
+.reveal {
+  opacity:0; /* 最初は見せない */
+  transform:translateY(26px); /* 少し下にずらす */
+  transition:opacity .9s ease, transform .9s ease; /* 表示アニメーション */
+}
+.reveal.show {
+  opacity:1; /* 表示する */
+  transform:none; /* 元の位置に戻す */
+}
+
+/* ===== メニュー ===== */
+.menu-sec {
+  background:#33261A; /* メニュー背景 */
+  color:#EFE3CC; /* 文字色 */
+  padding:12vh 5vw 13vh; /* 余白 */
+}
+.board {
+  max-width:980px; /* 最大幅 */
+  margin:0 auto; /* 中央寄せ */
+  border:2px solid #C7A263; /* 外枠 */
+  padding:7vh 6vw; /* 内側余白 */
+  position:relative; /* ::before の基準 */
+}
+.board::before {
+  content:""; /* 内側の飾り枠 */
+  position:absolute; /* 枠の固定 */
+  inset:9px; /* 少し内側に入れる */
+  border:1px solid rgba(199,162,99,.5); /* 細い内枠 */
+  pointer-events:none; /* クリックを邪魔しない */
+}
+.board h2 {
+  text-align:center; /* 中央揃え */
+  font-size:clamp(32px,5vw,52px); /* 見出しサイズ */
+  color:#E8B96F; /* 強調色 */
+}
+.board .tag {
+  text-align:center; /* 中央揃え */
+  letter-spacing:.4em; /* 文字間 */
+  font-size:11px; /* 小さな補足 */
+  color:#B59B6F; /* 補助色 */
+  margin:10px 0 40px; /* 上下余白 */
+}
+.reco {
+  display:grid; /* 横3列 */
+  grid-template-columns:repeat(3,1fr); /* 3等分 */
+  gap:16px; /* カード間の余白 */
+  margin-bottom:48px; /* 下の余白 */
+}
+.reco figure { border:2px solid #C7A263; /* 枠線 */ }
+.reco .ph { height:150px; /* 写真の高さ */ }
+.reco figcaption {
+  padding:12px 14px; /* 内側余白 */
+  font-size:12.5px; /* 文字サイズ */
+  line-height:1.8; /* 行間 */
+  background:#2A1E13; /* キャプション背景 */
+}
+.reco b {
+  display:block; /* 改行 */
+  color:#E8B96F; /* 強調色 */
+  letter-spacing:.08em; /* 文字間 */
+  margin-bottom:3px; /* 下の余白 */
+  font-size:13px; /* 見出しサイズ */
+}
+.cols {
+  display:grid; /* 2列レイアウト */
+  grid-template-columns:1fr 1fr; /* 左右同幅 */
+  gap:7vw; /* 列間の余白 */
+}
+.cols h3 {
+  font-size:13px; /* 小見出し */
+  letter-spacing:.32em; /* 文字間 */
+  color:#E8B96F; /* 強調色 */
+  border-bottom:1px solid #C7A263; /* 下線 */
+  padding-bottom:8px; /* 下線との間隔 */
+  margin:0 0 14px; /* 下の余白 */
+}
+.cols h3:not(:first-child) { margin-top:32px; /* 2つ目以降を少し下げる */ }
+.item {
+  display:flex; /* 商品名と価格を横並び */
+  justify-content:space-between; /* 左右に分ける */
+  align-items:baseline; /* 文字の高さをそろえる */
+  font-size:13.5px; /* 本文サイズ */
+  padding:8px 0; /* 上下余白 */
+}
+.item i {
+  flex:1; /* 真ん中の伸びる線 */
+  border-bottom:1px dotted #6E5742; /* 点線 */
+  margin:0 10px; /* 左右の間隔 */
+  transform:translateY(-4px); /* 少し上に合わせる */
+}
+.item small {
+  display:block; /* 改行表示 */
+  width:100%; /* 1行で使う */
+  font-size:11px; /* 小さめの補足 */
+  color:#A98B5F; /* 補助色 */
+  margin-top:-4px; /* 少し詰める */
+  padding-bottom:6px; /* 下の余白 */
+}
+.board .foot {
+  text-align:center; /* 中央揃え */
+  margin-top:44px; /* 上の余白 */
+  font-size:12px; /* 小さめ */
+  letter-spacing:.2em; /* 文字間 */
+  color:#B59B6F; /* 補助色 */
+  line-height:2.2; /* 行間 */
+}
+
+@media (max-width:760px) {
+  .cols {
+    grid-template-columns:1fr; /* 1列にする */
+    gap:10px; /* 列間を少しだけ残す */
+  }
+  .reco { grid-template-columns:1fr; /* 1列にする */ }
+}
+
+/* ===== アクセス ===== */
+.access {
+  background:#F8F1E2; /* 明るい背景色 */
+  padding:12vh 5vw 16vh; /* 上下に余白をつける */
+}
+.access .wrap {
+  max-width:980px; /* 横幅の上限 */
+  margin:0 auto; /* 中央寄せ */
+}
+.access h2 {
+  text-align:center; /* 見出しを中央揃え */
+  font-size:clamp(30px,4.6vw,46px); /* 画面幅で文字サイズを調整 */
+  color:#7A5A3A; /* 見出し色 */
+}
+.access .tag {
+  text-align:center; /* 中央揃え */
+  letter-spacing:.4em; /* 文字間を広げる */
+  font-size:11px; /* 小さめの文字 */
+  color:#A98B5F; /* 補足テキストの色 */
+  margin:10px 0 50px; /* 上下の間隔 */
+}
+.access .grids {
+  display:grid; /* 左右を並べる */
+  grid-template-columns:1fr 1.1fr; /* 左を少し細くする */
+  gap:5vw; /* カラム間の余白 */
+  align-items:start; /* 上端をそろえる */
+}
+.access dt {
+  font-size:11px; /* 項目名を小さく表示 */
+  letter-spacing:.28em; /* 文字間を広げる */
+  color:#C77B4A; /* 見出し色 */
+  font-weight:800; /* 太字にする */
+  margin-top:24px; /* 上に間隔をつくる */
+}
+.access dt:first-child { margin-top:0; /* 最初だけ上余白を消す */ }
+.access dd {
+  color:#5C4632; /* 説明文の色 */
+  margin-top:6px; /* dtとの間隔 */
+  font-size:14px; /* 本文サイズ */
+  line-height:1.9; /* 行間を広めにする */
+}
+.map {
+  background:linear-gradient(140deg,#DCE9E2,#C5DAD3); /* 地図風の背景 */
+  border-radius:14px; /* 角を丸める */
+  min-height:340px; /* 最低高さを確保 */
+  display:flex; /* 中央配置のためのflex */
+  flex-direction:column; /* 縦並び */
+  align-items:center; /* 横方向を中央揃え */
+  justify-content:center; /* 縦方向を中央揃え */
+  color:#5E7A6E; /* 文字色 */
+  border:1px solid #C9D8CE; /* 枠線 */
+  box-shadow:0 14px 36px rgba(110,90,60,.14); /* 立体感 */
+}
+.map .pin {
+  width:30px; /* ピンの幅 */
+  height:30px; /* ピンの高さ */
+  border-radius:50% 50% 50% 0; /* しずく形 */
+  background:#C75B4A; /* ピンの色 */
+  transform:rotate(-45deg); /* 斜めに回転 */
+  margin-bottom:18px; /* 下の文字との間隔 */
+  position:relative; /* ::after の基準にする */
+}
+.map .pin::after {
+  content:""; /* 中の白い丸 */
+  position:absolute;
+  inset:8px; /* 内側に縮める */
+  background:#F8F1E2; /* 中心色 */
+  border-radius:50%; /* 円形 */
+}
+.map b {
+  letter-spacing:.3em; /* 文字間を広げる */
+  font-size:13px; /* 少し小さめ */
+}
+.map small {
+  margin-top:8px; /* 上の文字との間隔 */
+  font-size:11px; /* 補足表示 */
+}
+
+@media (max-width:760px) {
+  .access .grids {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* これで横方向の真ん中に寄せる */
+  }
+
+  /* dl（テキスト部分）を左揃えにしつつ、幅を制限して中央に置く */
+  .access dl {
+    width: 80%;       /* 画面幅の80%に限定 */
+    margin: 0 auto;   /* 左右中央に配置 */
+    text-align: left; /* 中の文字は左揃えを維持 */
+  }
+
+  /* map（地図部分）も同じように中央に寄せる */
+  .access .map {
+    width: 80%;
+    margin: 20px auto 0; /* dlとの隙間を20px空けて中央に */
+    text-align: center;
+  }
+  
+}
+
+footer {
+  background:#1F160D; /* フッター背景 */
+  color:#B59B6F; /* 文字色 */
+  text-align:center; /* 中央揃え */
+  padding:44px 5vw; /* 余白 */
+  font-size:12px; /* 小さめ */
+  letter-spacing:.15em; /* 文字間 */
+  line-height:2.4; /* 行間 */
+}
+footer .script {
+  font-size:26px; /* ロゴ文字を大きく */
+  color:#E8B96F; /* 強調色 */
+  display:block; /* 改行 */
+  margin-bottom:10px; /* 下の余白 */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; /* アニメーションをやめる */ }
+  .reveal {
+    opacity:1 !important; /* 最初から表示 */
+    transform:none !important; /* ずらさない */
+    transition:none !important; /* 動きを止める */
+  }
+}
